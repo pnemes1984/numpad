@@ -1,0 +1,103 @@
+/* GENERAL STUFF */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+/* COLORS AND SHADOWS */
+body {
+    --grey: rgb(60, 60, 60);
+    
+    --bluegrey: rgb(80, 95, 105);
+    --blue_1: rgb(70, 85, 90);
+    --blue_2: rgb(50, 65, 80);
+    
+    --stainless_1: rgb(220, 220, 220);
+    --stainless_2: rgb(190, 190, 190);
+    --stainless_3: rgb(170, 170, 170);
+    --stainless_4: rgb(140, 140, 140);
+    
+    --transparent_white: rgba(255, 255, 255, .7);
+    
+    --shadow: 1vh 1vh 2vh rgba(0, 0, 0, .5);
+    --shadow_small: .5vh .5vh .5vh rgba(0, 0, 0, .5);
+}
+
+/* NUMPAD */
+#numpad-wrapper {
+    position: fixed;
+    bottom: 5vh;
+    left: 50vw;
+    transform: translateX(-50%);
+    
+    height: 40vh;
+    width: 40vw;
+    
+    min-width: 300px;
+    min-height: 300px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    border-radius: 2vh;
+    background-image: linear-gradient(to right bottom, var(--stainless_1), var(--stainless_2));
+    padding: 0.8vw;
+    
+    box-shadow: var(--shadow);
+}
+
+.num_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.num_btn {
+    width: 32%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 3.8vh;
+    line-height: 1.5;
+    
+    border: 1px solid var(--grey);
+    border-radius: 1vh;
+    box-shadow: VAR(--shadow_small);
+        
+    transition: .02s;
+    
+    cursor: pointer;
+}
+
+.num_btn:active{
+    transform: scale(.98) translateY(5%);
+    box-shadow: none;
+}
+
+.num_btn_num {
+    background-image: linear-gradient(to bottom, var(--stainless_1), var(--stainless_2));
+}
+
+.num_btn_func {
+    background-image: linear-gradient(to bottom, var(--stainless_3), var(--stainless_4));
+}
+
+#btn_ok {
+    width: 100%;
+    
+    background-image: linear-gradient(to bottom, var(--blue_1), var(--blue_2));
+    color: white;
+}
+
+.numpad_frozen-btn:active {
+    color: var(--darkblue);
+    box-shadow: var(--shadow_pinpad);
+    background-image: url(../img/Login_button_inactiv.png);
+}
+
+.numpad_frozen-bck:active {
+    background-image: url(../img/Login_delete_inactiv.png);
+}

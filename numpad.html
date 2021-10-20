@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Numpad</title>
+        
+        <link rel="stylesheet" href="numpad.css">
+        
+        <script src="numpad.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                numpad.generate();
+                document.querySelector('#btn-generate').setAttribute('onclick', '')
+            });
+            
+            function switchButtons(t) {
+                document.querySelector('#btn-generate').setAttribute('onclick', t === 0 ? 'numpad.generate();switchButtons(1)' : '');
+                document.querySelector('#btn-hide').setAttribute('onclick', t === 0 ? '' : 'numpad.hide();switchButtons(0)');
+            }
+        </script>
+    </head>
+    
+    <body>
+        <div id="numpad-display"></div>
+        <input type="hidden" id="numpad-input">
+        <form id="function_switch" onchange="numpad.changeMode()">
+            <input type="radio" name="mode" id="radio_normal" value="normal" checked>
+            <label for="radio_normal">Normal</label>
+            <input type="radio" name="mode" id="radio_pin" value="pin">
+            <label for="radio_pin">PIN</label>
+        </form>
+        <div id="buttons">
+            <div id="btn-hide" class="btn" onclick="numpad.hide();switchButtons(0)">HIDE</div>
+            <div id="btn-generate" class="btn" onclick ="numpad.generate();switchButtons(1)">GENERATE</div>
+        </div>
+        <div id="numpad"></div>
+    </body>
+</html>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        background-color: rgb(80, 95, 105);
+        font-family: sans-serif;
+    }
+    
+    #numpad-display {
+        width: 20vw;
+        height: 5vh;
+        min-height: 50px;
+        
+        padding: 5px 20px;
+        margin-top: 20px;
+        
+        background: var(--transparent_white);
+        border: 0px;
+        border-radius: 4vh;
+        
+        font-size: 3vh;
+        text-align: center;
+    }
+
+    #function_switch {
+        margin-top: 30px;
+    }
+    
+    #buttons {
+        width: 24vw;
+        height: 10vh;
+        
+        margin-top: 30px;
+        
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .btn {
+        width: 10vw;
+        height: 4vh;
+        
+        border-radius: 3px;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        font-size: 2vh;
+        text-transform: uppercase;
+        
+        color: white;
+        
+        box-shadow: .5vh .5vh .5vh .05vh rgba(0, 0, 0, .5);
+        
+        cursor: pointer;
+        
+        transition: .1s;
+    }
+    
+    .btn:active {
+        box-shadow: none;
+        transform: translateY(.5vh) scale(.98);
+    }
+    
+    #btn-hide {
+        background-color: rgb(145, 75, 75);
+    }
+    
+    #btn-hide:hover {
+        background-color: rgb(165, 95, 95);
+    }
+    
+    #btn-generate {
+        background-color: rgb(100, 115, 125);
+    }
+    
+    #btn-generate:hover {
+        background-color: rgb(120, 135, 145);
+    }
+</style>
